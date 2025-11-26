@@ -1,0 +1,112 @@
+/* ============================================================
+   RESET BÁSICO
+=========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    background-color: #f8f9fa; /* gris suave (bg-light Bootstrap) */
+}
+
+/* ============================================================
+   NAVBAR PROFESIONAL
+=========================================================== */
+
+/* Logo responsive */
+.logo-navbar {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Botón Iniciar Sesión */
+.btn-login {
+    transition: 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #ffffff !important;
+    color: #000 !important;
+}
+
+/* Ajustes responsive del navbar en móviles */
+@media (max-width: 576px) {
+    .navbar-brand span {
+        font-size: 1.1rem; 
+    }
+
+    .logo-navbar {
+        width: 28px;
+        height: 28px;
+    }
+
+    .btn-login {
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ============================================================
+   CONTENEDOR PRINCIPAL PARA EMPUJAR EL FOOTER HACIA ABAJO
+=========================================================== */
+.content-wrapper {
+    min-height: calc(100vh - 80px); /* 80px = altura del footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* ============================================================
+   FOOTER RESPONSIVO Y ESTABLE
+=========================================================== */
+.footer-full {
+    background-color: #000;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto;
+}
+
+.footer-full a {
+    color: #4dc247;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-full a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   IMÁGENES RESPONSIVAS
+=========================================================== */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================================
+   AJUSTES PARA MÓVILES
+=========================================================== */
+@media (max-width: 600px) {
+    .display-5 {
+        font-size: 1.9rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .footer-full {
+        padding: 15px 0;
+        font-size: 0.9rem;
+    }
+}
+
+
+

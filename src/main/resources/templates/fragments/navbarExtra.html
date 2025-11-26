@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="navbarExtra">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm mt-1">
+        <div class="container">
+          <!-- 🔥 CAMBIO IMPORTANTE: container en vez de container-fluid -->
+
+          <!-- Espacio vacío para alinear debajo del logo -->
+          <a class="navbar-brand fw-bold" href="#" style="visibility: hidden"
+            >Logo</a
+          >
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#extraNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="extraNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Preguntas Frecuentes</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                >
+                  Productos
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Herramientas de limpieza</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Accesorios y Repuestos</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#"
+                      >Herramientas de perforación y ajuste</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <!-- BUSCADOR -->
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Buscar"
+              />
+              <button class="btn btn-outline-success" type="submit">
+                Buscar
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>

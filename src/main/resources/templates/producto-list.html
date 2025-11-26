@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lista de Productos</title>
+
+    <!-- FAVICON -->
+    <link rel="icon" type="image/png" href="/img/IconoFerreteria_2.png" />
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS PERSONAL -->
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <style>
+      @media (max-width: 576px) {
+        h1 {
+          font-size: 1.7rem;
+        }
+        .btn {
+          font-size: 0.8rem !important;
+          padding: 6px 10px !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    <!-- NAVBAR COMO FRAGMENTO -->
+    <header th:replace="fragments/navbar :: navbar"></header>
+    <div th:replace="fragments/notif :: notificaciones"></div>
+
+    <div class="container mt-4">
+      <h1 class="text-center mb-4 fw-bold">Lista de Productos</h1>
+
+      <!-- Botón agregar producto SOLO para trabajadores -->
+      <div class="d-flex justify-content-end mb-3">
+        <a
+          th:if="${session.usuarioLogeado.rol == 'TRABAJADOR'}"
+          th:href="@{/productos/nuevo}"
+          class="btn btn-success"
+        >
+          ➕ Agregar Producto
+        </a>
+      </div>
+
+      <!-- TABLA -->
+      <div class="table-responsive shadow-sm rounded">
+        <table class="table table-bordered table-hover align-middle">
+          <thead class="table-dark text-center">
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Descripción</th>
+              <th>Precio s/</th>
+              <th>Cantidad</th>
+              <th th:if="${session.usuarioLogeado.rol == 'TRABAJADOR'}">
+                Acciones
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr th:each="producto : ${productos}">
+              <td th:text="${producto.id}"></td>
+              <td th:text="${producto.nombre}"></td>
+              <td th:text="${producto.descripcion}"></td>
+              <td th:text="${producto.precio}"></td>
+              <td th:text="${producto.cantidad}"></td>
+
+              <!-- Acciones SOLO para trabajadores -->
+              <td
+                class="text-center"
+                th:if="${session.usuarioLogeado.rol == 'TRABAJADOR'}"
+              >
+                <div class="d-flex flex-column flex-md-row gap-2">
+                  <a
+                    th:href="@{/productos/editar/{id}(id=${producto.id})}"
+                    class="btn btn-primary btn-sm"
+                  >
+                    ✏ Editar
+                  </a>
+
+                  <a
+                    th:href="@{/productos/eliminar/{id}(id=${producto.id})}"
+                    class="btn btn-danger btn-sm"
+                    onclick="return confirm('¿Seguro que quieres eliminar este producto?');"
+                  >
+                    🗑 Eliminar
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- BOTÓN INICIO -->
+      <div class="text-center mt-4 mb-5">
+        <a href="/" class="btn btn-secondary"> 🏠 Volver al Inicio </a>
+      </div>
+    </div>
+  </body>
+</html>

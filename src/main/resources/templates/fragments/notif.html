@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="notificaciones">
+      <style>
+        /* Mensaje superpuesto */
+        .alert-overlay {
+          position: fixed;
+          top: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 9999;
+          min-width: 320px;
+          max-width: 90%;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+          opacity: 1;
+          transition: opacity 0.5s ease;
+        }
+
+        .alert-hidden {
+          opacity: 0;
+        }
+      </style>
+
+      <!-- Mensaje de exito -->
+      <div
+        class="alert alert-success alert-dismissible fade show alert-overlay"
+        th:if="${success}"
+        th:text="${success}"
+        role="alert"
+        id="alertBox"
+      >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+
+      <!-- Mensaje de error -->
+      <div
+        class="alert alert-danger alert-dismissible fade show alert-overlay"
+        th:if="${error}"
+        th:text="${error}"
+        role="alert"
+        id="alertBox"
+      >
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+
+      <script>
+        // Desvanecer automaticamente a los 2 segundos
+        setTimeout(() => {
+          const alert = document.getElementById("alertBox");
+          if (alert) {
+            alert.classList.add("alert-hidden");
+            // Eliminarlo totalmente después de la animación
+            setTimeout(() => alert.remove(), 500);
+          }
+        }, 2000);
+      </script>
+    </div>
+  </body>
+</html>
